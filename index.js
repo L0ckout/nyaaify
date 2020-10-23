@@ -44,7 +44,7 @@ module.exports = class nyaifier extends Plugin {
 	});
 	
 	const messageEvents = await getModule(["sendMessage"]);
-    		inject("owoifierSend", messageEvents, "sendMessage", function(args) {
+    		inject("nyaifierSend", messageEvents, "sendMessage", function(args) {
 	    	if(donya) {
         	let text = args[1].content;
         	text = nyaify(text);
