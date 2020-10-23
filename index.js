@@ -12,7 +12,7 @@ function nyaify(s){
         return s
 }
 
-deus = false;
+donya = false;
 
 module.exports = class nyaifier extends Plugin {
 	async startPlugin () {
@@ -21,10 +21,10 @@ module.exports = class nyaifier extends Plugin {
 		description: 'make your nya auto. Nya!',
 		usage: '{c}',
 		executor: (args) => {
-			deus=!deus
+			donya=!donya
 			return {
 		        send: false,
-			result: `Your text will now${deus?'':' not'} be nyad. Nya!`
+			result: `Your text will now${donya?'':' not'} be nyad. Nya!`
 		}}
 	});
 	powercord.api.commands.registerCommand({
@@ -33,7 +33,7 @@ module.exports = class nyaifier extends Plugin {
 		usage: '{c} [text to nya]',
 		executor: (args)=>{
 			let ret = args.join(' ')
-			if(!deus)
+			if(!donya)
 			{
 				ret = nyaify(ret)
 			}
@@ -45,7 +45,7 @@ module.exports = class nyaifier extends Plugin {
 	
 	const messageEvents = await getModule(["sendMessage"]);
     		inject("owoifierSend", messageEvents, "sendMessage", function(args) {
-	    	if(deus) {
+	    	if(donya) {
         	let text = args[1].content;
         	text = nyaify(text);
         	args[1].content = text;      
